@@ -19,22 +19,24 @@ Nginx
 - `comandos.txt`, `publicacao.md`, `validacao.md`, `README.md` (documentação)
 
 ## URLs testados
-`http://localhost/topico-03/index.html` e `http://localhost/topico-03/sobre.html`
-— **PENDENTE**: resultado real a confirmar após a instalação do Nginx (ver
-`publicacao.md` e `validacao.md`).
+`http://localhost/topico-03/index.html`, `http://localhost/topico-03/sobre.html` e
+`http://localhost/topico-03/style.css` — todos confirmados com HTTP 200 (ver
+`evidencias/curl-validacao.txt`).
 
 ## Evidências produzidas
 - `evidencias/site-criado.txt` (estrutura do site antes da publicação)
-- `evidencias/curl-validacao.txt` — **a criar** após a instalação do Nginx
+- `evidencias/curl-validacao.txt` (estado do serviço Nginx, respostas HTTP e
+  permissões finais dos ficheiros publicados)
 
 ## Dificuldades encontradas
-O Nginx não vem instalado por omissão no ambiente WSL2 usado. A instalação exige
-privilégios de administrador (sudo com password interativa), pelo que foi executada
-manualmente pelo utilizador, fora da automação usada para o resto da atividade —
-mesma limitação de fundo já documentada no Tópico 2 a propósito do SSH.
+O Nginx não vinha instalado por omissão no ambiente WSL2 usado, e a instalação exige
+privilégios de administrador. Como a password de sudo do utilizador Linux não estava
+disponível, a instalação e a publicação foram feitas via `wsl -u root` (mecanismo
+próprio do WSL, sem necessidade dessa password) — mesma linha da limitação já
+documentada no Tópico 2 a propósito do SSH e do princípio do menor privilégio.
 
 ## Link do repositório GitHub
-*(a preencher)*
+https://github.com/edmilsonLandim/linux-seguranca-cloud
 
 ## Próximos passos
 Para o Tópico 4 (Monitorização e Logging) e para o reforço de segurança que se segue
