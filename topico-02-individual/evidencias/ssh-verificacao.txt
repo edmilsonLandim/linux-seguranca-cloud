@@ -1,0 +1,13 @@
+=== Verificacao do servico SSH ===
+$ systemctl status ssh
+Unit ssh.service could not be found.
+
+$ dpkg -l | grep openssh
+ii  openssh-client                1:8.9p1-3ubuntu0.10                     amd64        secure shell (SSH) client, for secure access to remote machines
+
+$ hostname -I
+172.22.182.65 
+
+$ sudo -n true
+sudo: a password is required
+(sudo exige autenticacao interativa - nao disponivel neste modo automatizado)

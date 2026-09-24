@@ -1,0 +1,7 @@
+Registo - Tarefa 1 (Preparar ou aceder ao ambiente Linux)
+
+Trilho seguido: Trilho A - VM local (equivalente: WSL2, ambiente Linux integrado ao Windows)
+Ambiente utilizado: WSL2 - Ubuntu 22.04.3 LTS (kernel 6.6.87.1-microsoft-standard-WSL2)
+Estado do ambiente: Operacional - terminal ativo, comandos executados com sucesso, estrutura de projeto criada
+Dificuldade encontrada: Nenhuma
+Plano para continuar: Manter o WSL2/Ubuntu 22.04 como ambiente principal de prática nos próximos tópicos (gestão de utilizadores, SSH, serviço web); avaliar mais à frente a criação de uma VPS real (ex.: Hostinger) para os tópicos que exigem acesso remoto pela rede.

@@ -1,0 +1,34 @@
+=== Validação da publicação - Tópico 3 ===
+Data: 2026-09-24 12:45:11
+
+$ systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2026-09-24 12:44:32 -01; 39s ago
+       Docs: man:nginx(8)
+   Main PID: 1414 (nginx)
+      Tasks: 9 (limit: 9341)
+
+$ curl -I http://localhost/topico-03/index.html
+HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Thu, 24 Sep 2026 13:45:11 GMT
+Content-Type: text/html
+Content-Length: 1360
+Last-Modified: Thu, 24 Sep 2026 13:44:54 GMT
+Connection: keep-alive
+ETag: "6ab52956-550"
+Accept-Ranges: bytes
+
+
+$ curl -s -o /dev/null -w 'HTTP status: %{http_code}\n' http://localhost/topico-03/sobre.html
+HTTP status: 200
+
+$ curl -s -o /dev/null -w 'HTTP status: %{http_code}\n' http://localhost/topico-03/style.css
+HTTP status: 200
+
+$ ls -l /var/www/html/topico-03
+total 12
+-rw-r--r-- 1 www-data www-data 1360 Sep 24 12:44 index.html
+-rw-r--r-- 1 www-data www-data 1093 Sep 24 12:44 sobre.html
+-rw-r--r-- 1 www-data www-data  718 Sep 24 12:44 style.css

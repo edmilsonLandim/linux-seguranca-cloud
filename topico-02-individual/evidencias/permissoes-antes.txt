@@ -1,0 +1,6 @@
+=== ls -l inicial (antes de aplicar permissoes) ===
+$ ls -l
+total 12
+-rw-r--r-- 1 edmilson edmilson 27 Sep 21 14:14 publico.txt
+-rw-r--r-- 1 edmilson edmilson 28 Sep 21 14:14 restrito.txt
+-rw-r--r-- 1 edmilson edmilson 75 Sep 21 14:14 script.sh

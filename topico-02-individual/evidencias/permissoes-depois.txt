@@ -1,0 +1,12 @@
+=== ls -l apos aplicar permissoes ===
+$ chmod 644 publico.txt
+$ chmod 640 restrito.txt
+$ chmod u+x script.sh
+$ ls -l
+total 12
+-rw-r--r-- 1 edmilson edmilson 27 Sep 21 14:14 publico.txt
+-rw-r----- 1 edmilson edmilson 28 Sep 21 14:14 restrito.txt
+-rwxr--r-- 1 edmilson edmilson 75 Sep 21 14:14 script.sh
+
+$ ./script.sh
+Script executado com sucesso pelo utilizador: edmilson

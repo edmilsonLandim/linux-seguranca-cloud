@@ -1,0 +1,83 @@
+Registo de comandos - Tópico 2 (Gestão de Identidades e Acessos)
+Ambiente: WSL2 (Ubuntu 22.04.3 LTS), utilizador edmilson, host RAI-GV-NOSI-189
+Data: 2026-09-21
+
+--- Tarefa A1: criar a estrutura de trabalho ---
+
+1. mkdir -p linux-seguranca-cloud/topico-02-individual/evidencias
+   Finalidade: criar a pasta do tópico e a subpasta de evidências num só comando (-p cria
+   diretórios intermédios em falta).
+
+2. mkdir -p linux-seguranca-cloud/topico-02-individual/teste-permissoes
+   Finalidade: criar a pasta de teste onde serão criados os ficheiros para o exercício
+   de permissões (Tarefa A3/A4).
+
+--- Tarefa A2: identificar utilizador e grupos ---
+
+3. whoami
+   Finalidade: confirmar qual o utilizador autenticado na sessão (edmilson).
+
+4. id
+   Finalidade: mostrar o UID, GID e todos os grupos (com respetivos GIDs) a que o
+   utilizador pertence - permite ver de imediato se tem privilégios administrativos
+   (grupo "sudo").
+
+5. groups
+   Finalidade: listar de forma simplificada os nomes dos grupos a que o utilizador
+   pertence, sem os identificadores numéricos.
+
+--- Tarefa A3: criar ficheiros de teste ---
+
+6. echo "..." > publico.txt / echo "..." > restrito.txt
+   Finalidade: criar dois ficheiros de teste com conteúdo mínimo, para depois lhes
+   aplicar permissões diferentes.
+
+7. cat > script.sh << 'EOF' ... EOF
+   Finalidade: criar um pequeno script executável de teste (script.sh), usado para
+   validar a permissão de execução aplicada na Tarefa A4.
+
+8. ls -l
+   Finalidade: registar o estado inicial das permissões dos três ficheiros, antes de
+   qualquer alteração com chmod (evidência "antes").
+
+--- Tarefa A4: aplicar permissões ---
+
+9. chmod 644 publico.txt
+   Finalidade: dar ao dono permissão de leitura e escrita, e a todos os outros
+   (grupo e outros) apenas leitura - adequado a um ficheiro que pode ser
+   consultado por qualquer pessoa mas só editado pelo dono.
+
+10. chmod 640 restrito.txt
+    Finalidade: dar ao dono leitura e escrita, ao grupo apenas leitura, e a "outros"
+    nenhum acesso - adequado a um ficheiro com informação mais sensível, partilhada
+    apenas dentro do grupo de trabalho.
+
+11. chmod u+x script.sh
+    Finalidade: adicionar apenas ao dono a permissão de execução, sem alterar as
+    restantes permissões já existentes (leitura/escrita do dono, leitura do
+    grupo/outros) - permite correr o script sem o tornar executável por todos.
+
+12. ls -l
+    Finalidade: confirmar visualmente que as permissões foram aplicadas como
+    esperado (evidência "depois").
+
+13. ./script.sh
+    Finalidade: testar que a permissão de execução (u+x) foi realmente aplicada e
+    que o dono consegue correr o script.
+
+--- Parte B (Opção B2 - Nível intermédio): verificação de SSH ---
+
+14. systemctl status ssh
+    Finalidade: verificar se existe um serviço SSH (unidade "ssh.service") instalado
+    e ativo neste ambiente.
+
+15. dpkg -l | grep openssh
+    Finalidade: confirmar quais os pacotes openssh instalados (cliente e/ou servidor).
+
+16. hostname -I
+    Finalidade: identificar o(s) endereço(s) IP atribuído(s) a esta instância, caso
+    existisse um servidor SSH a correr, para construir o comando de ligação.
+
+17. sudo -n true
+    Finalidade: verificar, sem interação, se o utilizador tem acesso sudo sem
+    password configurado (necessário para instalar o pacote openssh-server).

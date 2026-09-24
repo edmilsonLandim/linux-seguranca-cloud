@@ -1,0 +1,33 @@
+=== Evidência de terminal ativo - Tópico 1 ===
+Data: 2026-09-17 10:04:23
+
+$ whoami
+edmilson
+
+$ hostname
+RAI-GV-NOSI-189
+
+$ pwd
+/home/edmilson
+
+$ ls -l ~
+total 4
+drwxr-xr-x 4 edmilson edmilson 4096 Sep 17 10:04 linux-seguranca-cloud
+
+$ df -h /
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  2.2G  954G   1% /
+
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       342Mi       6.8Gi       3.0Mi       440Mi       7.1Gi
+Swap:          2.0Gi          0B       2.0Gi
+
+$ uname -a
+Linux RAI-GV-NOSI-189 6.6.87.1-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Mon Apr 21 17:08:54 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+$ lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.3 LTS
+Release:	22.04
+Codename:	jammy

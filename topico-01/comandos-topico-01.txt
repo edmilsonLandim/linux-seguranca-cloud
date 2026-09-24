@@ -1,0 +1,33 @@
+Registo de comandos - Tópico 1
+Ambiente: WSL2 (Ubuntu 22.04.3 LTS), utilizador edmilson, host RAI-GV-NOSI-189
+Data: 2026-09-17
+
+1. whoami
+   Finalidade: identificar o utilizador atualmente autenticado na sessão do terminal.
+
+2. hostname
+   Finalidade: identificar o nome da máquina/instância Linux em uso.
+
+3. pwd
+   Finalidade: mostrar o diretório de trabalho atual (working directory), útil para saber onde os comandos seguintes vão atuar.
+
+4. ls -l ~
+   Finalidade: listar o conteúdo do diretório pessoal (home) em formato detalhado (permissões, dono, grupo, tamanho, data).
+
+5. df -h /
+   Finalidade: verificar o espaço em disco disponível e usado no sistema de ficheiros raiz, em formato legível (human-readable).
+
+6. free -h
+   Finalidade: verificar a memória RAM e swap disponíveis e usadas, em formato legível.
+
+7. uname -a
+   Finalidade: obter informação do kernel Linux (versão, arquitetura, nome do sistema) para confirmar o ambiente exato em uso.
+
+8. lsb_release -a
+   Finalidade: confirmar a distribuição Linux e a versão instalada (Ubuntu 22.04.3 LTS).
+
+9. mkdir -p linux-seguranca-cloud/topico-01/evidencias linux-seguranca-cloud/produto-final
+   Finalidade: criar a estrutura de diretórios do projeto num único comando (a opção -p cria diretórios intermédios em falta, sem erro se já existirem).
+
+10. find linux-seguranca-cloud | sort
+    Finalidade: listar recursivamente a estrutura de pastas e ficheiros criada, para confirmar que corresponde ao pedido e servir de evidência.

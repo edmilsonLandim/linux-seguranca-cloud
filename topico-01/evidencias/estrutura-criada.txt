@@ -1,0 +1,10 @@
+/home/edmilson/linux-seguranca-cloud
+/home/edmilson/linux-seguranca-cloud/ambiente.md
+/home/edmilson/linux-seguranca-cloud/produto-final
+/home/edmilson/linux-seguranca-cloud/topico-01
+/home/edmilson/linux-seguranca-cloud/topico-01/README.md
+/home/edmilson/linux-seguranca-cloud/topico-01/comandos-topico-01.txt
+/home/edmilson/linux-seguranca-cloud/topico-01/evidencias
+/home/edmilson/linux-seguranca-cloud/topico-01/evidencias/estrutura-criada.txt
+/home/edmilson/linux-seguranca-cloud/topico-01/evidencias/registo-trilho.txt
+/home/edmilson/linux-seguranca-cloud/topico-01/evidencias/terminal-output.txt

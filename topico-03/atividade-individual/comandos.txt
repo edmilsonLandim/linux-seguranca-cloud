@@ -1,0 +1,60 @@
+Registo de comandos - Tópico 3 (Segurança em Infraestruturas Cloud)
+Ambiente: WSL2 (Ubuntu 22.04.3 LTS), utilizador edmilson, host RAI-GV-NOSI-189
+Data: 2026-09-24
+
+--- Preparação da estrutura ---
+
+1. mkdir -p linux-seguranca-cloud/topico-03/atividade-individual/site
+   linux-seguranca-cloud/topico-03/atividade-individual/evidencias
+   Finalidade: criar a estrutura de pastas da atividade (site e evidências) num único
+   comando, com criação automática de diretórios intermédios (-p).
+
+2. cat > index.html / sobre.html / style.css
+   Finalidade: criar o conteúdo das três páginas/ficheiros do site (Nível 2 -
+   Intermédio): página inicial, página "sobre" e folha de estilos.
+
+3. ls -l site/
+   Finalidade: confirmar que os três ficheiros foram criados corretamente, com as
+   permissões por omissão (rw-r--r--), antes de qualquer publicação.
+
+--- Instalação e publicação (Nginx) ---
+
+4. sudo apt update
+   Finalidade: atualizar a lista de pacotes disponíveis antes de instalar software novo.
+
+5. sudo apt install -y nginx
+   Finalidade: instalar o servidor web Nginx. Requer privilégios de administrador
+   (sudo), pelo que foi executado interativamente pelo próprio utilizador, com a sua
+   password - não foi automatizado, por não dever haver instalação de software com
+   privilégios elevados sem confirmação explícita e password do utilizador.
+
+6. sudo systemctl status nginx / sudo systemctl enable --now nginx
+   Finalidade: confirmar que o serviço Nginx está instalado e garantir que arranca
+   (e fica ativo) no sistema.
+
+7. sudo mkdir -p /var/www/html/topico-03
+   Finalidade: criar uma subpasta dedicada a este tópico dentro do diretório de
+   publicação por omissão do Nginx, para não sobrepor a página de boas-vindas
+   original nem futuras publicações de outros tópicos.
+
+8. sudo cp site/index.html site/sobre.html site/style.css /var/www/html/topico-03/
+   Finalidade: copiar os três ficheiros do site para o diretório de publicação do
+   servidor web.
+
+9. sudo chown -R www-data:www-data /var/www/html/topico-03
+   Finalidade: atribuir a propriedade dos ficheiros publicados ao utilizador/grupo
+   com que o Nginx corre (www-data), em vez de os deixar com o utilizador pessoal -
+   coerente com o princípio do menor privilégio já aplicado no Tópico 2.
+
+--- Validação ---
+
+10. curl -I http://localhost/topico-03/index.html
+    Finalidade: confirmar, sem abrir navegador, que o servidor responde com sucesso
+    (HTTP 200) ao pedido da página inicial.
+
+11. curl http://localhost/topico-03/sobre.html
+    Finalidade: confirmar que a segunda página também está acessível e devolve o
+    conteúdo HTML esperado.
+
+(Os outputs reais destes dois últimos comandos, obtidos após a instalação do Nginx,
+estão em evidencias/. Ver publicacao.md e validacao.md para o resultado detalhado.)
