@@ -1,0 +1,51 @@
+Registo de comandos - Tópico 4 (Segurança, firewall e hardening inicial)
+Ambiente: WSL2 (Ubuntu 22.04.3 LTS), utilizador edmilson, host RAI-GV-NOSI-189
+Data: 2026-09-25
+
+--- Preparação ---
+
+1. mkdir -p linux-seguranca-cloud/topico-04/atividade-individual/evidencias
+   Finalidade: criar a estrutura de pastas da atividade.
+
+--- Nível 1: identificar serviços, portas e riscos ---
+
+2. sudo lsof -i -n -P | grep LISTEN
+   Finalidade: listar todos os processos com sockets de rede em escuta (LISTEN),
+   identificando o nome do processo, o utilizador com que corre e a porta usada -
+   é o inventário de base da superfície de ataque do servidor.
+
+3. sudo ss -tulpn
+   Finalidade: alternativa/confirmação ao lsof, listando ligações TCP e UDP em
+   escuta com o respetivo processo (PID/nome) - usada para cruzar os resultados
+   e confirmar que nada foi omitido.
+
+--- Nível 2: aplicar firewall (UFW) ---
+
+4. sudo ufw status verbose
+   Finalidade: confirmar o estado inicial do UFW (instalado mas inativo) antes de
+   qualquer alteração.
+
+5. sudo ufw allow 80/tcp
+   Finalidade: permitir explicitamente o tráfego de entrada na porta 80/tcp (HTTP),
+   necessária para o serviço Nginx publicado no Tópico 3 continuar acessível.
+
+6. sudo ufw enable
+   Finalidade: ativar o firewall com a política por omissão "deny incoming, allow
+   outgoing" - bloqueia todo o tráfego de entrada exceto o explicitamente permitido
+   (neste caso, só a porta 80).
+
+7. sudo ufw status verbose
+   Finalidade: confirmar, depois de ativado, que a política e as regras aplicadas
+   correspondem ao esperado (deny incoming por omissão + allow 80/tcp).
+
+--- Validação pós-firewall ---
+
+8. curl -s -o /dev/null -w 'HTTP status: %{http_code}\n' http://localhost/topico-03/index.html
+   curl -s -o /dev/null -w 'HTTP status: %{http_code}\n' http://localhost/topico-03/sobre.html
+   Finalidade: confirmar que o serviço web publicado no Tópico 3 continua acessível
+   depois de o firewall ter sido ativado, validando que a regra "allow 80/tcp" está
+   corretamente configurada.
+
+Nota: não foi necessário permitir SSH (não há servidor SSH instalado nesta
+instância - ver Tópico 2) nem HTTPS (não há certificado TLS configurado). Ver
+justificação completa em superficie-ataque.md e firewall.md.

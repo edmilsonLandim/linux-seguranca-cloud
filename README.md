@@ -9,4 +9,5 @@ Ambiente de trabalho: WSL2 (Ubuntu 22.04.3 LTS), documentado em [`ambiente.md`](
 - [`topico-01/`](topico-01/) - Administração para Linux em Cloud (preparação do ambiente)
 - [`topico-02-individual/`](topico-02-individual/) - Gestão de Identidades e Acessos
 - [`topico-03/`](topico-03/) - Segurança em Infraestruturas Cloud (publicação de um serviço web)
+- [`topico-04/`](topico-04/) - Segurança, firewall e hardening inicial (UFW)
 - [`produto-final/`](produto-final/) - consolidação final do módulo

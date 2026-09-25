@@ -1,0 +1,20 @@
+=== Estado do UFW e validação do serviço - Tópico 4 ===
+Data: 2026-09-25 15:45:57
+
+$ sudo ufw status verbose
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+80/tcp                     ALLOW IN    Anywhere                  
+80/tcp (v6)                ALLOW IN    Anywhere (v6)             
+
+
+$ curl -s -o /dev/null -w 'HTTP status: %{http_code}\n' http://localhost/topico-03/index.html
+HTTP status: 200
+
+$ curl -s -o /dev/null -w 'HTTP status: %{http_code}\n' http://localhost/topico-03/sobre.html
+HTTP status: 200

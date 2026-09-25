@@ -1,0 +1,34 @@
+=== Serviços/portas em escuta (antes do firewall) ===
+Data: 2026-09-25 15:44:45
+
+$ sudo lsof -i -n -P | grep LISTEN
+systemd-r 133 systemd-resolve   14u  IPv4   2386      0t0  TCP 127.0.0.53:53 (LISTEN)
+nginx     244            root    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     244            root    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+nginx     245        www-data    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     245        www-data    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+nginx     246        www-data    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     246        www-data    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+nginx     247        www-data    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     247        www-data    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+nginx     248        www-data    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     248        www-data    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+nginx     249        www-data    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     249        www-data    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+nginx     250        www-data    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     250        www-data    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+nginx     251        www-data    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     251        www-data    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+nginx     252        www-data    6u  IPv4   2048      0t0  TCP *:80 (LISTEN)
+nginx     252        www-data    7u  IPv6   8193      0t0  TCP *:80 (LISTEN)
+
+$ sudo ss -tulpn
+Netid State  Recv-Q Send-Q  Local Address:Port Peer Address:PortProcess                                                                                                                                                                                                                
+udp   UNCONN 0      0       127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=133,fd=13))                                                                                                                                                                             
+udp   UNCONN 0      0      10.255.255.254:53        0.0.0.0:*                                                                                                                                                                                                                          
+udp   UNCONN 0      0           127.0.0.1:323       0.0.0.0:*                                                                                                                                                                                                                          
+udp   UNCONN 0      0               [::1]:323          [::]:*                                                                                                                                                                                                                          
+tcp   LISTEN 0      4096    127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=133,fd=14))                                                                                                                                                                             
+tcp   LISTEN 0      1000   10.255.255.254:53        0.0.0.0:*                                                                                                                                                                                                                          
+tcp   LISTEN 0      511           0.0.0.0:80        0.0.0.0:*    users:(("nginx",pid=252,fd=6),("nginx",pid=251,fd=6),("nginx",pid=250,fd=6),("nginx",pid=249,fd=6),("nginx",pid=248,fd=6),("nginx",pid=247,fd=6),("nginx",pid=246,fd=6),("nginx",pid=245,fd=6),("nginx",pid=244,fd=6))
+tcp   LISTEN 0      511              [::]:80           [::]:*    users:(("nginx",pid=252,fd=7),("nginx",pid=251,fd=7),("nginx",pid=250,fd=7),("nginx",pid=249,fd=7),("nginx",pid=248,fd=7),("nginx",pid=247,fd=7),("nginx",pid=246,fd=7),("nginx",pid=245,fd=7),("nginx",pid=244,fd=7))
