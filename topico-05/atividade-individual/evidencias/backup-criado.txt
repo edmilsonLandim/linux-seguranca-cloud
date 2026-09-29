@@ -1,0 +1,12 @@
+=== Backup - Tópico 5 ===
+$ tar -czf /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/backups/backup-topico-03-20260929-103044.tar.gz -C /var/www/html topico-03
+
+$ ls -l /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/backups
+total 4
+-rw-r--r-- 1 root root 1480 Sep 29 10:30 backup-topico-03-20260929-103044.tar.gz
+
+$ tar -tzf /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/backups/backup-topico-03-20260929-103044.tar.gz
+topico-03/
+topico-03/sobre.html
+topico-03/style.css
+topico-03/index.html

@@ -1,0 +1,72 @@
+Registo de comandos - Tópico 5 (Monitorização e Logging)
+Ambiente: WSL2 (Ubuntu 22.04.3 LTS), utilizador edmilson, host RAI-GV-NOSI-189
+Data: 2026-09-29
+
+--- Preparação ---
+
+1. mkdir -p linux-seguranca-cloud/topico-05/atividade-individual/{evidencias,backups,teste-recuperacao}
+   Finalidade: criar a estrutura de pastas da atividade.
+
+--- Nível 1: monitorização e logs básicos ---
+
+2. uptime
+   Finalidade: verificar há quanto tempo o sistema está em funcionamento e a
+   carga média (load average) recente - permite detetar reinícios inesperados
+   ou sobrecarga do sistema.
+
+3. free -h
+   Finalidade: verificar memória RAM e swap usadas/disponíveis, em formato
+   legível.
+
+4. df -h /
+   Finalidade: verificar o espaço em disco disponível no sistema de ficheiros
+   raiz - essencial para prever falhas por disco cheio (que impedem, entre
+   outras coisas, a escrita de logs e de backups).
+
+5. systemctl status nginx
+   Finalidade: confirmar que o serviço web publicado no Tópico 3 continua
+   ativo (active/running).
+
+6. sudo ufw status verbose
+   Finalidade: confirmar que a política de firewall aplicada no Tópico 4
+   continua ativa e sem alterações não documentadas.
+
+7. journalctl -p err -n 20 --no-pager
+   Finalidade: consultar os últimos 20 registos do sistema classificados como
+   erro (prioridade "err"), para identificar eventos relevantes sem ter de ler
+   todo o log.
+
+8. tail -10 /var/log/nginx/access.log
+   tail -10 /var/log/nginx/error.log
+   Finalidade: consultar os pedidos mais recentes feitos ao servidor web e
+   quaisquer erros reportados pelo próprio Nginx.
+
+9. curl -s -o /dev/null http://localhost/topico-03/nao-existe.html
+   Finalidade: gerar propositadamente um pedido a uma página inexistente, para
+   ter no log um evento real (HTTP 404) a analisar - em vez de depender de
+   tráfego que ainda não tinha ocorrido nesta sessão.
+
+--- Nível 2: backup e recuperação ---
+
+10. tar -czf backups/backup-topico-03-<data>.tar.gz -C /var/www/html topico-03
+    Finalidade: criar uma cópia de segurança comprimida (.tar.gz) do diretório
+    crítico identificado (conteúdo publicado do serviço web), preservando a
+    estrutura de pastas a partir de `/var/www/html`.
+
+11. tar -tzf backups/backup-topico-03-<data>.tar.gz
+    Finalidade: listar o conteúdo do arquivo de backup sem o extrair, para
+    confirmar que inclui os ficheiros esperados antes de confiar nele.
+
+12. tar -xzf backups/backup-topico-03-<data>.tar.gz -C teste-recuperacao
+    Finalidade: restaurar o backup numa pasta de teste isolada (nunca
+    diretamente por cima do original), simulando um cenário de recuperação
+    real sem risco de sobrepor dados válidos por engano.
+
+13. diff -r /var/www/html/topico-03 teste-recuperacao/topico-03
+    Finalidade: comparar recursivamente o diretório original com o restaurado,
+    confirmando que não há diferenças de conteúdo.
+
+14. md5sum /var/www/html/topico-03/* teste-recuperacao/topico-03/*
+    Finalidade: confirmar, por checksum criptográfico, que cada ficheiro
+    restaurado é byte-a-byte idêntico ao original - validação mais rigorosa
+    do que a simples comparação de nomes/tamanhos.

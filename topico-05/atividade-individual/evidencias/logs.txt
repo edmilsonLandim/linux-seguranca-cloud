@@ -1,0 +1,32 @@
+=== Logs - Tópico 5 ===
+
+$ journalctl -p err -n 20 --no-pager
+Sep 25 15:48:21 RAI-GV-NOSI-189 systemd[500]: user@1000.service: Failed to attach to cgroup /user.slice/user-1000.slice/user@1000.service: Device or resource busy
+Sep 25 15:48:21 RAI-GV-NOSI-189 systemd[500]: user@1000.service: Failed at step CGROUP spawning /lib/systemd/systemd: Device or resource busy
+Sep 25 15:48:21 RAI-GV-NOSI-189 systemd[1]: Failed to start User Manager for UID 1000.
+-- Boot 531ef9e02e9546fd8faec3112634e250 --
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: PCI: Fatal: No config space access function found
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_is_feature_enabled: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -2
+Sep 29 10:27:44 RAI-GV-NOSI-189 unknown: WSL (215) ERROR: CheckConnection: getaddrinfo() failed: -5
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_is_feature_enabled: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -2
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_is_feature_enabled: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -22
+Sep 29 10:27:44 RAI-GV-NOSI-189 kernel: misc dxg: dxgk: dxgkio_query_adapter_info: Ioctl failed: -2
+
+$ tail -10 /var/log/nginx/access.log
+127.0.0.1 - - [29/Sep/2026:10:30:17 -0100] "GET /topico-03/index.html HTTP/1.1" 200 1360 "-" "curl/7.81.0"
+127.0.0.1 - - [29/Sep/2026:10:30:17 -0100] "GET /topico-03/sobre.html HTTP/1.1" 200 1093 "-" "curl/7.81.0"
+127.0.0.1 - - [29/Sep/2026:10:30:17 -0100] "GET /topico-03/nao-existe.html HTTP/1.1" 404 162 "-" "curl/7.81.0"
+
+$ tail -10 /var/log/nginx/error.log
+(vazio - sem erros registados pelo Nginx até ao momento)

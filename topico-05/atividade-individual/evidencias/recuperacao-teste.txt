@@ -1,0 +1,24 @@
+=== Recuperação (teste) - Tópico 5 ===
+$ tar -xzf /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/backups/backup-topico-03-20260929-103044.tar.gz -C /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao
+
+$ ls -lR /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao
+/home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao:
+total 4
+drwxr-xr-x 2 www-data www-data 4096 Sep 24 12:44 topico-03
+
+/home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao/topico-03:
+total 12
+-rw-r--r-- 1 www-data www-data 1360 Sep 24 12:44 index.html
+-rw-r--r-- 1 www-data www-data 1093 Sep 24 12:44 sobre.html
+-rw-r--r-- 1 www-data www-data  718 Sep 24 12:44 style.css
+
+$ diff -r /var/www/html/topico-03 /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao/topico-03
+SEM DIFERENCAS - recuperacao identica ao original
+
+$ md5sum /var/www/html/topico-03/* /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao/topico-03/*
+6c3a2669ab847619acfdf81254804bdf  /var/www/html/topico-03/index.html
+5351f0ed9c3ab58f5883309b1f914655  /var/www/html/topico-03/sobre.html
+704d2ef72c0a8edc829fb1a2c75affd2  /var/www/html/topico-03/style.css
+6c3a2669ab847619acfdf81254804bdf  /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao/topico-03/index.html
+5351f0ed9c3ab58f5883309b1f914655  /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao/topico-03/sobre.html
+704d2ef72c0a8edc829fb1a2c75affd2  /home/edmilson/linux-seguranca-cloud/topico-05/atividade-individual/teste-recuperacao/topico-03/style.css
