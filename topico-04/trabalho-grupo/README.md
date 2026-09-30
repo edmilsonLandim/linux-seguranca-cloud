@@ -1,8 +1,9 @@
 # Trabalho de grupo - Tópico 4
 
 ## Grupo
-*(preencher: nome/número do grupo, elementos e papéis assumidos — ver também a
-Secção 1 do relatório)*
+- **Grupo:** X
+- **Elemento:** Edmilson Landim
+- **Papéis assumidos:** Edmilson Landim — responsável por todas as tarefas (preparação do ambiente, execução técnica, documentação e validação).
 
 ## Objetivo
 Propor um plano de segurança inicial (superfície de ataque, firewall e
